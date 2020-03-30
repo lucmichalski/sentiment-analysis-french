@@ -1,0 +1,9 @@
+bert-for-tf2
+flask
+numpy
+pandas
+params-flow
+pyyaml
+scikit-learn
+seaborn
+sentencepiece

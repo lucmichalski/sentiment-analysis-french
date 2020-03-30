@@ -1,0 +1,6 @@
+models/
+data/
+logs/
+.vscode/
+version.yml
+*.pyc

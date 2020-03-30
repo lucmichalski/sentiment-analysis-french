@@ -1,0 +1,13 @@
+FROM tensorflow/tensorflow:latest-gpu-py3
+
+SHELL ["/bin/bash", "-c"]
+
+ADD . /app
+
+WORKDIR /app
+
+RUN pip install -q -r requirements.txt
+
+EXPOSE 5000
+
+CMD ["python", "src/app.py"]
