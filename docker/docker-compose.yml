@@ -1,0 +1,18 @@
+version: '2.3'
+
+services:
+  
+  summarizer:
+    image: summarizer
+    container_name: summarizer
+    working_dir: /summarizer
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    ports:
+      - "6001:6001"
+    volumes:
+      - ../:/summarizer
+    runtime: nvidia
+
+    command: python /summarizer/app.py
