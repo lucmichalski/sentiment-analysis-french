@@ -1,0 +1,9 @@
+apiVersion: v1
+entries:
+  nboost:
+  - apiVersion: v1
+    appVersion: "1.0"
+    name: nboost
+    version: 0.0.3
+    urls:
+    - nboost-0.0.3.tgz
