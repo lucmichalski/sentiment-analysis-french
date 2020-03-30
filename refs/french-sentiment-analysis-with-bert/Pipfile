@@ -1,0 +1,26 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+flake8 = "*"
+pylint = "*"
+bleach = ">=3.1.2"
+
+[packages]
+jupyter = "*"
+requests = "*"
+beautifulsoup4 = "*"
+dateparser = "*"
+pandas = "*"
+etaprogress = "*"
+matplotlib = "*"
+seaborn = "*"
+jsonlines = "*"
+scikit-learn = "*"
+tensorflow = "==2.1.0"
+transformers = "*"
+
+[requires]
+python_version = "3.7"
