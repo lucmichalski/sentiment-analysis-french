@@ -2,4 +2,19 @@
 version: '3.7'
 services:
 
-  
+  sidekiq: &app_base
+    build:
+      context: .
+    image: lucmichalski/sentiment-analysis:fr-latest
+    volumes:
+    - model-data:/src/models
+    command: /src/scripts/download_models.sh
+
+  server:
+    <<: *app_base
+    ports:
+    - "5000:5000"  
+    command: ["app.py"]
+
+volumes:
+  model-data:
