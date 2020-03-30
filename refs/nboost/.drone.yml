@@ -1,0 +1,15 @@
+
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: build
+  image: tensorflow/tensorflow:1.15.0-gpu-py3
+  commands:
+    - pip install -e .[all]
+    - python -m unittest discover tests
+
+trigger:
+  branch:
+  - master
