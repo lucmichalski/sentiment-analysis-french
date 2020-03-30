@@ -1,0 +1,69 @@
+version: 2
+jobs:
+  cache_and_run_tests:
+    docker:
+      - image: circleci/python:3.6
+    resource_class: xlarge
+    working_directory: ~/adaptnlp
+    steps:
+      - checkout
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "requirements.txt" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run:
+          name: install dependencies
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r requirements.txt
+      - save_cache:
+          paths:
+            - ./venv
+          key: v1-dependencies-{{ checksum "requirements.txt" }}
+      - run: pip install .
+      - run:
+          name: run tests
+          command: |
+            python3 -m pytest
+  deploy_doc:
+    docker:
+      - image: circleci/python:3.6
+    working_directory: ~/adaptnlp
+    steps:
+      - checkout
+      - run: git config user.name "ci-build"
+      - add_ssh_keys:
+          fingerprints:
+            - "e6:70:63:b0:cb:2c:f9:75:43:65:e8:91:89:0a:01:ef"
+      - run: pip install .
+      - run: pip install -r docs/requirements.txt
+      - run:
+          name: install mkdocs an deploy to gh-pages
+          command: |
+            python -m mkdocs gh-deploy -m "[skip ci] Deployed {sha} with MkDocs version: {version}"
+
+workflow_filters: &workflow_filters
+  filters:
+    branches:
+      only:
+        - master
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - cache_and_run_tests
+      - deploy_doc: *workflow_filters
+  nightly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - cache_and_run_tests

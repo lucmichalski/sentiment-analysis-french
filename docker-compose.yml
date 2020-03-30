@@ -1,0 +1,15 @@
+version: '3'
+services:
+  service:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - SERVER_PORT=5000
+      - SERVER_HOST=0.0.0.0
+    volumes:
+      - .:/adaptnlp
+      - logvolume01:/var/log 
+volumes:
+  logvolume01: {}
+

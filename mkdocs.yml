@@ -1,0 +1,51 @@
+site_name: AdaptNLP
+site_description: AdaptNLP - An easy to use Natural Language Processing library and framework for predicting, training, fine-tuning, and serving up state-of-the-art NLP models.
+site_url: https://github.com/Novetta/adaptnlp
+
+theme:
+  name: 'material'
+  palette:
+    primary: '800'
+    accent: 'green'
+  logo: "img/NovettaAdaptNLP-mark-dark-100px.png"
+  favicon: 'img/favicon.ico'
+
+use_directory_urls: false
+repo_name: Novetta/adaptnlp
+repo_url: https://github.com/Novetta/adaptnlp
+edit_uri: ''
+
+nav:
+  - AdaptNLP: 'index.md'
+  - Tutorial - User Guide:
+      - Tutorial - Intro: 'tutorial/index.md'
+      - Token Tagging: 'tutorial/token-tagging.md'
+      - Sequence Classification: 'tutorial/sequence-classification.md'
+      - Embeddings: 'tutorial/embeddings.md'
+      - Question Answering: 'tutorial/question-answering.md'
+  - Advanced - User Guide:
+      - Advanced - Intro: 'tutorial/advanced-index.md'
+      - Training Sequence Classification: 'tutorial/training-sequence-classification.md'
+      - Fine Tuning Language Model: 'tutorial/fine-tuning-language-model.md'
+  - NLP Services with FastAPI: 'rest.md'
+  - Class API:
+      - Token Tagger: 'class-api/token-tagger-module.md'
+      - Sequence Classifier: 'class-api/sequence-classifier-module.md'
+      - Embeddings: 'class-api/embeddings-module.md'
+      - Question Answering: 'class-api/question-answering-module.md'
+      - Sequence Classifier Trainer: 'class-api/sequence-classifier-trainer-module.md'
+      - Language Model Fine-tuning: 'class-api/language-model-finetuner-module.md'
+  - Contributing: 'contributing.md'
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - markdown.extensions.codehilite:
+      guess_lang: false
+  - admonition
+  - codehilite
+  - mkautodoc
+  - extra
+
+extra_css:
+  - css/custom.css
