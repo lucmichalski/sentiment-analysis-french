@@ -1,0 +1,8 @@
+click
+flake8
+black
+jupyter
+jupyterlab
+transformers==2.5.1
+flair==0.4.5
+html_text
