@@ -6,6 +6,7 @@ services:
     build:
       context: .
     image: lucmichalski/sentiment-analysis:fr-latest
+    working_dir: /src
     volumes:
     - model-data:/src/models
     command: /src/scripts/download_models.sh

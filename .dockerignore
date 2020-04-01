@@ -1,0 +1,15 @@
+docs
+docs/
+docs/*
+docs/**
+refs
+refs/
+refs/*
+refs/**
+Dockerfile
+docker-compose.yml
+.gitignore
+.git
+.git/
+.git/*
+.git/**
